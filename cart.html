@@ -21,6 +21,7 @@
         <a href="index.html">首頁</a>
         <a href="products.html">所有商品</a>
         <a href="about.html">關於烤焦</a>
+        <a href="remind.html">購物須知&&常見問題</a>
     </nav>
     
     <main class="cart-page">
@@ -33,6 +34,7 @@
                     <th>單價</th>
                     <th>數量</th>
                     <th>小計</th>
+                    <th>操作</th>
                 </tr>
             </thead>
             <tbody id="cartBody"></tbody>
@@ -41,12 +43,16 @@
         <div class="cart-total">
             總金額：<span id="totalPrice">$0</span>
         </div>
+
+        <div class="to-products">
+            <a href="checkout.html" class="btn">前往結帳</a>
+        </div>
     </main>
     
     <footer class="footer">
         <p>© 2025 烤焦 版權聲明</p>
     </footer>
     
-    <script src="cart-page.js"></script>
+    <script src="cartpage.js"></script>
 </body>
 </html>

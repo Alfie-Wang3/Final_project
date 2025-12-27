@@ -210,6 +210,7 @@ a:hover {
   font-size: 18px;
   margin-bottom: 8px;
   color: #000100;
+  text-align: center;
 }
 
 .product-price {
@@ -302,4 +303,104 @@ a:hover {
 
 .add-cart-btn.big:hover {
   background-color: #DE541E;
+}
+
+/*cart*/
+.cart-page {
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 0 40px;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+.cart-table th,
+.cart-table td {
+  border-bottom: 1px solid #ccc;
+  padding: 14px;
+  text-align: center;
+}
+
+.cart-table th {
+  background-color: #878472;
+  color: #F8F8F8;
+}
+
+.cart-total {
+  text-align: right;
+  margin-top: 30px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #9B1D20;
+}
+
+.qty-btn {
+  padding: 4px 10px;
+  margin: 0 6px;
+  background-color: #878472;
+  color: #F8F8F8;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.qty-btn:hover {
+  background-color: #DE541E;
+}
+
+.delete-btn {
+  padding: 6px 14px;
+  background-color: #9B1D20;
+  color: #F8F8F8;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #DE541E;
+}
+
+/*checkout*/
+.checkout-page {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+.order-summary ul {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.order-summary li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.order-total {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #9B1D20;
+  text-align: right;
+}
+
+.checkout-form label {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.checkout-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
 }
