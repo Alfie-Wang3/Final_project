@@ -28,13 +28,9 @@
         <div class="product-detail-img">商品圖片</div>
     
         <div class="product-detail-info">
-            <h1 class="product-name" data-id="p001">蛋糕</h1>
-            <p class="product-price" data-price="999">$999</p>
-        
-            <p class="product-desc">
-                使用頂級焦糖與濃郁奶油製作，
-                外酥內軟，是烤焦最受歡迎的招牌商品。
-            </p>
+            <h1 class="product-name"></h1>
+            <p class="product-price"></p>
+            <p class="product-desc"></p>
         
             <div class="product-qty">
                 <label>數量：</label>
@@ -53,6 +49,22 @@
             <p>© 2025 烤焦 版權聲明</p>
       </footer>
 
-      <script src="cart.js"></script>
+      
+    <div id="loginPopup" class="popup hidden">
+        <div class="popup-content">
+          <span class="close-btn" id="closeLogin">&times;</span>
+          <h2>會員登入</h2>
+      
+          <input type="text" id="usernameInput" placeholder="請輸入帳號">
+          <button id="loginBtn" class="btn" style="margin-top:20px;">
+            登入
+          </button>
+        </div>
+      </div>
+
+    <script src="popup.js"></script>
+    <script src="login.js"></script>
+    <script src="productsdata.js"></script>
+    <script src="product.js"></script>
 </body>
 </html>

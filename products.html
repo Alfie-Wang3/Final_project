@@ -34,56 +34,47 @@
         <h2 class="product-title">所有商品</h2>
         
         <section class="products-grid">
-            <div class="product-card">
-                <a href="product.html">
+            <a href="product.html?id=p001" class="product-card">
                 <div class="product-img">商品圖片1</div>
                 <h3 class="product-title">商品1</h3>
                 <p class="product-price">$999</p>
-                <button class="add-cart-btn" id="addToCartBtn">加入購物車</button></a>
-            </div>
+                <button class="add-cart-btn" id="addToCartBtn">加入購物車</button>
+            </a>
         
-        
-            <div class="product-card">
-                <a href="product.html">
+            <a href="product.html?id=p002" class="product-card">
                 <div class="product-img">商品圖片2</div>
                 <h3 class="product-title">商品2</h3>
                 <p class="product-price">$999</p>
-                <button class="add-cart-btn" id="addToCartBtn">加入購物車</button></a>
-            </div>
-            
-            
-            <div class="product-card">
-                <a href="product.html">
+                <button class="add-cart-btn" id="addToCartBtn">加入購物車</button>
+            </a>
+
+            <a href="product.html?id=p003" class="product-card">
                 <div class="product-img">商品圖片3</div>
                 <h3 class="product-title">商品3</h3>
                 <p class="product-price">$999</p>
-                <button class="add-cart-btn" id="addToCartBtn">加入購物車</button></a>
-            </div>
-            
-            
-            <div class="product-card">
-                <a href="product.html">
+                <button class="add-cart-btn" id="addToCartBtn">加入購物車</button>
+            </a>
+
+            <a href="product.html?id=p004" class="product-card">
                 <div class="product-img">商品圖片4</div>
                 <h3 class="product-title">商品4</h3>
                 <p class="product-price">$999</p>
-                <button class="add-cart-btn" id="addToCartBtn">加入購物車</button></a>
-            </div>
+                <button class="add-cart-btn" id="addToCartBtn">加入購物車</button>
+            </a>
 
-            <div class="product-card">
-                <a href="product.html">
+            <a href="product.html?id=p005" class="product-card">
                 <div class="product-img">商品圖片5</div>
                 <h3 class="product-title">商品5</h3>
                 <p class="product-price">$999</p>
-                <button class="add-cart-btn" id="addToCartBtn">加入購物車</button></a>
-            </div>
+                <button class="add-cart-btn" id="addToCartBtn">加入購物車</button>
+            </a>
 
-            <div class="product-card">
-                <a href="product.html">
+            <a href="product.html?id=p006" class="product-card">
                 <div class="product-img">商品圖片6</div>
                 <h3 class="product-title">商品6</h3>
                 <p class="product-price">$999</p>
-                <button class="add-cart-btn" id="addToCartBtn">加入購物車</button></a>
-            </div>
+                <button class="add-cart-btn" id="addToCartBtn">加入購物車</button>
+            </a>
         </section>
     </main>
     
@@ -92,5 +83,23 @@
         <p>關於我們｜會員服務｜聯絡方式</p>
         <p>© 2025 烤焦 版權聲明</p>
     </footer>
+
+    
+    <div id="loginPopup" class="popup hidden">
+        <div class="popup-content">
+          <span class="close-btn" id="closeLogin">&times;</span>
+          <h2>會員登入</h2>
+      
+          <input type="text" id="usernameInput" placeholder="請輸入帳號">
+          <button id="loginBtn" class="btn" style="margin-top:20px;">
+            登入
+          </button>
+        </div>
+      </div>
+
+    <script src="popup.js"></script>
+    <script src="login.js"></script>
+    <script src="productsdata.js"></script>
+    <script src="product.js"></script>
 </body>
 </html>

@@ -17,8 +17,7 @@
             <a href="products.html" class="popup-btn">立即選購</a>
         </div>
     </div>
-    <script src="popup.js"></script>
-
+   
     <!--header-->
     <header class="navbar">
         <div class="nav-left">
@@ -49,7 +48,7 @@
     <!--主打商品-->
     <section class="featured">
         <div class="product-card">
-            <a href="product.html">
+            <a href="product.html?id=p001">
             <div class="product-img">商品圖片1</div>
             <h3 class="product-title">主打商品1</h3>
             <p class="product-price">$999</p>
@@ -57,7 +56,7 @@
           </div>
         
           <div class="product-card">
-            <a href="product.html">
+            <a href="product.html?id=p002">
             <div class="product-img">商品圖片2</div>
             <h3 class="product-title">主打商品2</h3>
             <p class="product-price">$999</p>
@@ -75,5 +74,21 @@
         <p>關於我們｜會員服務｜聯絡方式</p>
         <p>© 2025 烤焦 版權聲明</p>
     </footer>
+
+    <div id="loginPopup" class="popup hidden">
+        <div class="popup-content">
+          <span class="close-btn" id="closeLogin">&times;</span>
+          <h2>會員登入</h2>
+      
+          <input type="text" id="usernameInput" placeholder="請輸入帳號">
+          <button id="loginBtn" class="btn" style="margin-top:20px;">
+            登入
+          </button>
+        </div>
+      </div>
+
+    <script src="popup.js"></script>
+    <script src="login.js"></script>
+    <script src="productsdata.js"></script>
 </body>
 </html>
