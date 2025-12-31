@@ -106,7 +106,7 @@ a:hover {
 
 /*主視覺*/
 .hero {
-  height: 320px;
+  height: 325px;
   max-width: 100%;
   background-color: #000100;
   color: #F8F8F8;
@@ -114,6 +114,11 @@ a:hover {
   justify-content: center;
   align-items: center;
   font-size: 26px;
+}
+
+.hero img{
+  max-height: 320px;
+  width: 100%;
 }
 
 /*主打商品*/
@@ -163,7 +168,7 @@ a:hover {
   color: #F8F8F8;
   border-radius: 24px;
   font-size: 15px;
-  letter-spacing: 1px;
+  letter-spacing: 10px;
   transition: background-color 0.3s;
 }
 
@@ -406,4 +411,19 @@ a:hover {
   width: 100%;
   padding: 10px;
   margin-top: 6px;
+}
+
+/*一般文字介紹*/
+.title{
+  text-align: center;
+  font-size: 30px;
+  font-family: "標楷體";
+}
+
+.text{
+  text-align: left;
+  font-size: 20px;
+  font-family: "標楷體";
+  padding: 3px;
+  margin: 0px auto;
 }
