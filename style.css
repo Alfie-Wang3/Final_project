@@ -20,6 +20,29 @@ a:hover {
   color: #DE541E;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.site-logo {
+  height: 30px;
+}
+
+.site-name {
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.nav-icon {
+  height: 20px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
 /*popup廣告*/
 .popup {
   position: fixed;
@@ -106,7 +129,7 @@ a:hover {
 
 /*主視覺*/
 .hero {
-  height: 325px;
+  height: 400px;
   max-width: 100%;
   background-color: #000100;
   color: #F8F8F8;
@@ -117,8 +140,88 @@ a:hover {
 }
 
 .hero img{
-  max-height: 320px;
+  max-height: 100%;
   width: 100%;
+}
+
+.hero {
+  width: 100%;
+  background: #000;
+  position: relative;
+}
+
+.slideshow-container {
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slideshow-container img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+/* Slides */
+.mySlides {
+  display: none;
+}
+
+/* 淡入動畫 */
+.fade {
+  animation: fade 1.5s;
+}
+
+@keyframes fade {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+
+/* 左右按鈕 */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  padding: 12px;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  background: rgba(0,0,0,0.4);
+  border-radius: 3px;
+  transform: translateY(-50%);
+}
+
+.next {
+  right: 0;
+}
+
+.prev:hover, .next:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+/* 圓點 */
+.dots {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.dot {
+  position: relative;
+  height: 10px;
+  width: 10px;
+  margin: 0px 2px;
+  border-radius: 50%;
+  background-color: #bbb;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.dot.active {
+  background-color: #717171;
 }
 
 /*主打商品*/
@@ -426,4 +529,74 @@ a:hover {
   font-family: "標楷體";
   padding: 3px;
   margin: 0px auto;
+}
+
+@media (max-width: 768px) {
+
+  /* 導覽列 */
+  .navbar {
+    padding: 12px 20px;
+  }
+
+  .nav-center {
+    font-size: 18px;
+  }
+
+  .nav-left,
+  .nav-right {
+    width: auto;
+    font-size: 14px;
+  }
+
+  /*hero*/
+  .hero {
+    height: 220px;
+    margin: 20px auto;
+  }
+
+  .hero img {
+    height: 220px;
+    object-fit: cover;
+  }
+
+  /* 輪播按鈕 */
+  .prev,
+  .next {
+    font-size: 22px;
+    padding: 10px;
+  }
+
+  /* 圓點 */
+  .dots {
+    bottom: 8px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* 主打商品：直排 */
+  .featured {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .product-box {
+    width: 80%;
+    height: 200px;
+  }
+
+  /* 按鈕 */
+  .btn {
+    padding: 14px 28px;
+    font-size: 14px;
+  }
+
+  /* footer */
+  .footer {
+    font-size: 12px;
+    padding: 24px 10px;
+  }
 }

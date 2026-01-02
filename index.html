@@ -21,15 +21,22 @@
     <!--header-->
     <header class="navbar">
         <div class="nav-left">
-            <a href="#" class="member">會員</a>
+            <a href="#" class="member">
+                <img src="img/icon/icon_memberadd.png" class="nav-icon">
+                會員
+              </a>
         </div>
         
         <div class="nav-center logo">
-            烤焦
-        </div>
+            <img src="img/logo.PNG" alt="烤焦 Logo" class="site-logo">
+            <span class="site-name">烤焦</span>
+          </div>
         
         <div class="nav-right">
-            <a href="cart.html" class="cart">購物車</a>
+            <a href="cart.html" class="cart">
+                <img src="img/icon/icon_shoppingcart.png" class="nav-icon">
+                購物車
+              </a>
         </div>
     </header>
 
@@ -42,8 +49,33 @@
     
     <!--主視覺-->
     <section class="hero">
-        <img src="img/hero/hero1.jpg" alt="hero1">
+        <div class="slideshow-container">
+      
+          <div class="mySlides fade">
+            <img src="img/hero/hero4.jpeg" />
+          </div>
+      
+          <div class="mySlides fade">
+            <img src="img/hero/hero5.jpeg" />
+          </div>
+      
+          <div class="mySlides fade">
+            <img src="img/hero/hero6.jpeg" />
+          </div>
+      
+          <!-- 左右按鈕 -->
+          <a class="prev" onclick="plusSlides(-1)">‹</a>
+          <a class="next" onclick="plusSlides(1)">›</a>
+        </div>
+      
+        <!-- 圓點 -->
+        <div class="dots" style="text-align: center;">
+          <span class="dot" onclick="currentSlides(0)"></span>
+          <span class="dot" onclick="currentSlides(1)"></span>
+          <span class="dot" onclick="currentSlides(2)"></span>
+        </div>
     </section>
+      
 
     <!--主打商品-->
     <section class="featured">
@@ -90,5 +122,51 @@
     <script src="popup.js"></script>
     <script src="login.js"></script>
     <script src="productsdata.js"></script>
+
+    <script>
+        let slideIndex = 0;
+        let timer = null;
+        
+        document.addEventListener("DOMContentLoaded", function () {
+          showSlides(slideIndex);
+          autoPlay();
+        });
+        
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+        
+        function currentSlides(n) {
+          showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+          clearTimeout(timer);
+        
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+        
+          if (n >= slides.length) slideIndex = 0;
+          if (n < 0) slideIndex = slides.length - 1;
+        
+          for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+        
+          for (let i = 0; i < dots.length; i++) {
+            dots[i].classList.remove("active");
+          }
+        
+          slides[slideIndex].style.display = "block";
+          dots[slideIndex].classList.add("active");
+        }
+        
+        function autoPlay() {
+          slideIndex++;
+          showSlides(slideIndex);
+          timer = setTimeout(autoPlay, 3000);
+        }
+        </script>
+        
 </body>
 </html>
