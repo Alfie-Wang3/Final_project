@@ -1,43 +1,50 @@
-// 取得網址參數
 const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
 
-// 抓 DOM
+// 用字串 id 找商品
+const product = products.find(p => p.id === productId);
+
+if (!product) {
+  alert("找不到商品資料");
+  throw new Error("Product not found");
+}
+
+// DOM
 const nameEl = document.querySelector(".product-name");
 const priceEl = document.querySelector(".product-price");
 const descEl = document.querySelector(".product-desc");
-const addBtn = document.getElementById("addToCartBtn");
+const sizeEl = document.querySelector(".product-size");
+const storageEl = document.querySelector(".product-storage");
+const imgBox = document.querySelector(".product-detail-img");
 const qtyEl = document.querySelector(".product-qty input");
+const addBtn = document.getElementById("addToCartBtn");
 
-// 如果沒有 id
-if (!productId || !products[productId]) {
-  nameEl.textContent = "找不到商品";
-  addBtn.disabled = true;
-} else {
-  const product = products[productId];
+// 填資料
+nameEl.textContent = product.name;
+priceEl.textContent = `NT$ ${product.price}`;
+descEl.textContent = product.desc;
+sizeEl.textContent = `尺寸：${product.size}`;
+storageEl.textContent = `保存方式：${product.storage}`;
+imgBox.innerHTML = `<img src="${product.image}" alt="${product.name}">`;
 
-  nameEl.textContent = product.name;
-  priceEl.textContent = `$${product.price}`;
-  descEl.textContent = product.desc;
+// 加入購物車
+addBtn.addEventListener("click", () => {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const qty = Number(qtyEl.value);
 
-  // 加入購物車
-  addBtn.addEventListener("click", () => {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const exist = cart.find(item => item.id === product.id);
 
-    const exist = cart.find(item => item.id === product.id);
+  if (exist) {
+    exist.qty += qty;
+  } else {
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      qty: qty
+    });
+  }
 
-    if (exist) {
-      exist.qty += Number(qtyEl.value);
-    } else {
-      cart.push({
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        qty: Number(qtyEl.value)
-      });
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-    alert("已加入購物車");
-  });
-}
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("已加入購物車");
+});
