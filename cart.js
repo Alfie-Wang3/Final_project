@@ -1,31 +1,52 @@
-const addBtn = document.getElementById("addToCartBtn");
+const cartBody = document.getElementById("cartBody");
+const totalPriceEl = document.getElementById("totalPrice");
 
-if (addBtn) {
-  addBtn.addEventListener("click", () => {
-    const nameEl = document.querySelector(".product-name");
-    const priceEl = document.querySelector(".product-price");
-    const qtyEl = document.querySelector(".product-qty input");
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    const product = {
-      id: nameEl.dataset.id,
-      name: nameEl.textContent,
-      price: Number(priceEl.dataset.price),
-      qty: Number(qtyEl.value)
-    };
+cartBody.innerHTML = "";
+let total = 0;
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+if (cart.length === 0) {
+  cartBody.innerHTML = `
+    <tr>
+      <td colspan="5">購物車是空的</td>
+    </tr>
+  `;
+} else {
+  cart.forEach((item, index) => {
+    const subtotal = item.price * item.qty;
+    total += subtotal;
 
-    // 判斷是否已存在商品
-    const exist = cart.find(item => item.id === product.id);
+    const optionText =
+      item.options && item.options.length > 0
+        ? item.options.join("、")
+        : "無";
 
-    if (exist) {
-      exist.qty += product.qty;
-    } else {
-      cart.push(product);
-    }
+    const tr = document.createElement("tr");
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+    tr.innerHTML = `
+      <td>
+        <strong>${item.name}</strong><br>
+        <small>尺寸：${item.size}</small><br>
+        <small>加購：${optionText}</small>
+      </td>
+      <td>NT$ ${item.price}</td>
+      <td>${item.qty}</td>
+      <td>NT$ ${subtotal}</td>
+      <td>
+        <button onclick="removeItem(${index})">刪除</button>
+      </td>
+    `;
 
-    alert("已加入購物車");
+    cartBody.appendChild(tr);
   });
+}
+
+totalPriceEl.textContent = `NT$ ${total}`;
+
+// ===== 刪除商品 =====
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  location.reload();
 }

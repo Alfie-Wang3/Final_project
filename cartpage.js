@@ -29,7 +29,16 @@ function renderCart() {
 
     cartBody.innerHTML += `
       <tr>
-        <td>${item.name}</td>
+        <td>
+          <strong>${item.name}</strong><br>
+          <small>尺寸：${item.size}</small><br>
+          <small>
+            加購：
+            ${item.options && item.options.length > 0
+              ? item.options.join("、")
+              : "無"}
+          </small>
+        </td>
         <td>$${item.price}</td>
         <td>
           <button class="qty-btn" onclick="changeQty(${index}, -1)">−</button>

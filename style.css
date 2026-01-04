@@ -601,6 +601,49 @@ a:hover {
   padding: 0 20px;
 }
 
+/*Product Options */
+.product-options {
+  margin: 30px 0;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #F8F8F8;
+}
+
+.product-options h3 {
+  margin: 15px 0 10px;
+  color: #9B1D20;
+}
+
+.product-options label {
+  display: block;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.total-price {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #DE541E;
+}
+
+/* 注意事項 */
+.product-note {
+  margin-top: 40px;
+}
+
+.product-note h3 {
+  color: #9B1D20;
+  margin-bottom: 10px;
+}
+
+.product-note ul {
+  padding-left: 20px;
+  line-height: 1.8;
+  color: #000100;
+}
+
+
 
 @media (max-width: 768px) {
 
