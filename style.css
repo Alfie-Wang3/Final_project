@@ -20,6 +20,7 @@ a:hover {
   color: #DE541E;
 }
 
+
 .logo {
   display: flex;
   align-items: center;
@@ -569,18 +570,29 @@ a:hover {
 
 /*一般文字介紹*/
 .title{
+  font-size: 36px;
+  letter-spacing: 4px;
   text-align: center;
-  font-size: 30px;
-  font-family: "標楷體";
+  margin-bottom: 40px;
+  color: #9B1D20;
 }
 
 .text{
-  text-align: left;
-  font-size: 20px;
-  font-family: "標楷體";
-  padding: 3px;
-  margin: 0px auto;
+  font-size: 16px;
+  line-height: 2;
+  color: #000100;
+  background-color: #F8F8F8;
+  padding: 40px;
+  border-left: 6px solid #DE541E;
+  border-radius: 8px;
 }
+
+.page {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
 
 @media (max-width: 768px) {
 
