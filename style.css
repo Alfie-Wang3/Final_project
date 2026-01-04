@@ -29,7 +29,7 @@ a:hover {
 }
 
 .site-logo {
-  height: 30px;
+  height: 40px;
 }
 
 .site-name {
@@ -65,7 +65,7 @@ a:hover {
 .popup-content {
   background: #F8F8F8;
   padding: 30px;
-  width: 320px;
+  width: 500px;
   text-align: center;
   border-radius: 12px;
   border: 3px solid #9B1D20;
@@ -75,9 +75,11 @@ a:hover {
   position: absolute;
   top: 10px;
   right: 15px;
-  font-size: 24px;
+  font-size: 30px;
+  background-color: #000100;
+  border-radius: 30%;
   cursor: pointer;
-  color: #9B1D20;
+  color: #F8F8F8;
 }
 
 /*導覽列nav(header)*/
@@ -229,20 +231,26 @@ a:hover {
 .featured {
   display: flex;
   justify-content: center;
-  gap: 100px;
-  margin: 80px 0;
+  gap: 30px;
+  margin: 60px auto;
 }
 
-.product-box {
-  width: 260px;
-  height: 260px;
-  background-color: #F8F8F8;
-  border: 3px solid #878472;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  border-radius: 16px;
+.product-card {
+  width: 250px;
+  text-align: center;
+}
+
+.product-img {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /*按鈕*/
@@ -671,4 +679,5 @@ a:hover {
   .footer-advanced {
     padding: 40px 20px;
   }
+
 }

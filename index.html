@@ -11,8 +11,9 @@
     <div id="popup" class="popup hidden">
         <div class="popup-content">
             <span class="close-btn">&times;</span>
-            <h2>限時優惠</h2>
-            <p>全館商品限時優惠不打折，錯過不再！</p>
+            <h2>即將推出</h2>
+            <p>濃濃香菜 X 檸檬蛋糕</p>
+            <img src="img/hero/hero1.jpg" alt="香菜" style="width: 400px;">
 
             <a href="products.html" class="popup-btn">立即選購</a>
         </div>
@@ -52,15 +53,15 @@
         <div class="slideshow-container">
       
           <div class="mySlides fade">
-            <img src="img/hero/hero4.jpeg" />
+            <a href="product.html?id=p002"><img src="img/hero/hero4.jpeg" /></a>
           </div>
       
           <div class="mySlides fade">
-            <img src="img/hero/hero5.jpeg" />
+            <a href="product.html?id=p005"><img src="img/hero/hero5.jpeg" /></a>
           </div>
       
           <div class="mySlides fade">
-            <img src="img/hero/hero6.jpeg" />
+            <a href="product.html?id=p003"><img src="img/hero/hero6.jpeg" /></a>
           </div>
       
           <!-- 左右按鈕 -->
@@ -79,21 +80,10 @@
 
     <!--主打商品-->
     <section class="featured">
-        <div class="product-card">
-            <a href="product.html?id=p001">
-            <div class="product-img">商品圖片1</div>
-            <h3 class="product-title">主打商品1</h3>
-            <p class="product-price">$999</p>
-            <button class="add-cart-btn" id="addToCartBtn">加入購物車</button></a>
-          </div>
-        
-          <div class="product-card">
-            <a href="product.html?id=p002">
-            <div class="product-img">商品圖片2</div>
-            <h3 class="product-title">主打商品2</h3>
-            <p class="product-price">$999</p>
-            <button class="add-cart-btn" id="addToCartBtn">加入購物車</button></a>
-          </div>
+      <h2 class="product-title">熱銷/主打商品</h2>
+    </section>
+    <section class="featured" id="featuredProducts">
+      
     </section>
 
     <!--商品btn-->
@@ -166,6 +156,34 @@
     <script src="popup.js"></script>
     <script src="login.js"></script>
     <script src="productsdata.js"></script>
+
+    <script>
+      // 指定主打商品 id
+      const featuredIds = ["p002", "p003","p004"];
+    
+      const featuredContainer = document.getElementById("featuredProducts");
+    
+      featuredIds.forEach(id => {
+        const product = products.find(p => p.id === id);
+        if (!product) return;
+    
+        const card = document.createElement("div");
+        card.className = "product-card";
+    
+        card.innerHTML = `
+          <a href="product.html?id=${product.id}">
+            <div class="product-img">
+              <img src="${product.image}" alt="${product.name}">
+            </div>
+            <h3 class="product-title">${product.name}</h3>
+            <p class="product-price">NT$ ${product.price}</p>
+          </a>
+        `;
+    
+        featuredContainer.appendChild(card);
+      });
+    </script>
+    
 
     <script>
         let slideIndex = 0;
