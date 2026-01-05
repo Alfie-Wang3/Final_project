@@ -9,7 +9,7 @@
 <body>
   <header class="navbar">
     <div class="nav-left">
-      <a href="#" class="member">
+      <a href="member.html" class="member">
         <img src="img/icon/user.png" class="nav-icon">會員
       </a>
     </div>
@@ -33,6 +33,16 @@
 
   <main class="products-page">
     <h2 class="product-title">所有商品</h2>
+
+    <!-- 查詢與排序 -->
+     <div class="product-controls">
+      <input type="text" id="searchInput" placeholder="搜尋商品名稱...">
+      <select id="sortSelect">
+        <option value="default">預設排序</option>
+        <option value="price">依價格排序</option>
+      </select>
+    </div>
+
     <section class="products-grid" id="productsGrid"></section>
   </main>
 

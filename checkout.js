@@ -42,6 +42,17 @@ submitBtn.addEventListener("click", () => {
     return;
   }
 
+  // 取出購物車
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  if (cart.length > 0) { 
+    const history = JSON.parse(localStorage.getItem("purchaseHistory")) || []; 
+    history.push({ 
+      date: new Date().toLocaleString(), 
+      items: cart 
+    }); 
+    localStorage.setItem("purchaseHistory", JSON.stringify(history)); 
+  }
+
   alert("訂單已完成，感謝您的購買！");
   localStorage.removeItem("cart");
   window.location.href = "index.html";
