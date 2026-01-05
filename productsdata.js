@@ -26,7 +26,7 @@ const products = [
   {
     id: "p003",
     name: "招牌「烤焦」經典巴斯克",
-    price: "160 / 620",
+    price: 160,
     priceOptions: {
       slice: 160,
       whole: 620
@@ -51,7 +51,7 @@ const products = [
   {
     id: "p005",
     name: "琥珀草莓鮮奶油蛋糕",
-    price: "220 / 880",
+    price: 220,
     priceOptions: {
       slice: 220,
       whole: 880
@@ -64,7 +64,7 @@ const products = [
   {
     id: "p006",
     name: "海鹽焦糖脆層巧克力蛋糕",
-    price: "200 / 750",
+    price: 200,
     priceOptions: {
       slice: 200,
       whole: 750

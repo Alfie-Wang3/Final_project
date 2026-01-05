@@ -1,154 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>商品｜烤焦蛋糕店</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品｜烤焦蛋糕店</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="navbar">
     <div class="nav-left">
-        <a href="#" class="member">
-            <img src="img/icon/user.png" class="nav-icon">
-            會員
-          </a>
+      <a href="#" class="member">
+        <img src="img/icon/user.png" class="nav-icon">會員
+      </a>
     </div>
-    
     <div class="nav-center logo">
-        <img src="img/logo.PNG" alt="烤焦 Logo" class="site-logo">
-        <span class="site-name">烤焦</span>
-      </div>
-    
-    <div class="nav-right">
-        <a href="cart.html" class="cart">
-            <img src="img/icon/shopping-cart.png" class="nav-icon">
-            購物車
-          </a>
+      <img src="img/logo.png" alt="烤焦 Logo" class="site-logo">
+      <span class="site-name">烤焦</span>
     </div>
-</header>
-    
-      <nav class="sub-nav">
-        <a href="index.html">首頁</a>
-        <a href="products.html">所有商品</a>
-        <a href="about.html">關於烤焦</a>
-        <a href="remind.html">購物須知&&常見問題</a>
-    </nav>
-    
-      <main class="product-detail">
-        <div class="product-detail-img">商品圖片</div>
-    
-        <div class="product-detail-info">
-          <h1 class="product-name"></h1>
-          <p class="product-price"></p>
-          <p class="product-desc"></p>
-          <p class="product-size"></p>
-          <p class="product-storage"></p>
-          
-          
-          <div class="product-options">
-            <h3>尺寸選擇</h3>
+    <div class="nav-right">
+      <a href="cart.html" class="cart">
+        <img src="img/icon/shopping-cart.png" class="nav-icon">購物車
+      </a>
+    </div>
+  </header>
 
-            <h3>加購配料</h3>
-            <label>
-              <input type="checkbox" value="fruit" data-price="20">
-              加水果 + NT$20
-            </label>
-            <label>
-              <input type="checkbox" value="cream" data-price="5">
-              加奶油 + NT$5
-            </label>
-          
-            <h3 class="total-price">
-              總金額：<span id="totalPrice">NT$0</span>
-            </h3>
-          </div>
+  <nav class="sub-nav">
+    <a href="index.html">首頁</a>
+    <a href="products.html">所有商品</a>
+    <a href="about.html">關於烤焦</a>
+    <a href="remind.html">購物須知 & 常見問題</a>
+  </nav>
 
-          <!-- 注意事項 -->
-          <div class="product-note">
-            <h3>注意事項</h3>
-            <ul>
-              <li>蛋糕皆為手工製作，外觀略有差異屬正常現象</li>
-              <li>實際顏色可能因螢幕顯示略有不同</li>
-              <li>客製加料商品恕不接受退換</li>
-            </ul>
-          </div>
+  <main class="product-detail">
+    <div class="product-detail-img"></div>
+    <div class="product-detail-info">
+      <h1 class="product-name"></h1>
+      <p class="product-desc"></p>
+      <p class="product-size"></p>
+      <p class="product-storage"></p>
 
-
-            <div class="product-qty">
-                <label>數量：</label>
-                <input type="number" value="1" min="1">
-            </div>
-        
-            <button class="add-cart-btn big" id="addToCartBtn">
-                加入購物車
-            </button>
-        </div>
-      </main>
-    
-      <!-- footer -->
-      <footer class="footer footer-advanced">
-        <div class="footer-container">
-          <!--Logo社群-->
-          <div class="footer-col">
-            <img src="img/logo.PNG" alt="烤焦 Logo" class="footer-logo">
-      
-            <div class="footer-social">
-              <a href="#"><img src="img/icon/facebook.png"></a>
-              <a href="#"><img src="img/icon/instagram.png"></a>
-              <a href="mailto:alfiework3@gmail.com"><img src="img/icon/envelope.png"></a>
-            </div>
-          </div>
-          <!--公司資訊-->
-          <div class="footer-col">
-            <p>
-              <b>本公司官網商品已投保產品責任險</b><br>
-              投保字號：1000字第14PR123456號
-            </p>
-    
-            <p>
-              <img src="img/icon/envelope.png" class="footer-icon">
-              alfiework3@gmail.com
-            </p>
-      
-            <p>
-              食品業者登錄字號：F-123456789-0001
-            </p>
-          </div>
-      
-          <!--客服資訊-->
-          <div class="footer-col">
-            <p><b>線上客服時間：</b><br>週一至週五 09:00–17:00</p>
-            <a href="mailto:alfiework3@gmail.com"><p>線上客服</p></a>
-          </div>
-      
-          <!--網站連結-->
-          <div class="footer-col">
-            <a href="aboutus.html">關於我們</a>
-            <a href="service.html">服務條款</a>
-          </div>
-      
-        </div>
-      
-        <div class="footer-bottom">
-          © 2025 烤焦蛋糕店 All Rights Reserved.
-        </div>
-      </footer>
-      
-    <div id="loginPopup" class="popup hidden">
-        <div class="popup-content">
-          <span class="close-btn" id="closeLogin">&times;</span>
-          <h2>會員登入</h2>
-      
-          <input type="text" id="usernameInput" placeholder="請輸入帳號">
-          <button id="loginBtn" class="btn" style="margin-top:20px;">
-            登入
-          </button>
-        </div>
+      <div class="product-options">
+        <h3>尺寸選擇</h3>
+        <!-- 尺寸選項由 JS 動態插入 -->
+        <h3>加購配料</h3>
+        <label><input type="checkbox" value="水果" data-price="20"> 加水果 + NT$20</label>
+        <label><input type="checkbox" value="奶油" data-price="5"> 加奶油 + NT$5</label>
+        <h3 class="total-price">總金額：<span id="totalPrice">NT$0</span></h3>
       </div>
 
-    <script src="login.js"></script>
-    <script src="productsdata.js"></script>
-    <script src="product.js"></script>
+      <div class="product-qty">
+        <label>數量：</label>
+        <input type="number" value="1" min="1">
+      </div>
+
+      <button class="add-cart-btn big" id="addToCartBtn">加入購物車</button>
+    </div>
+  </main>
+
+  <footer class="footer footer-advanced">
+    <div class="footer-container">
+      <div class="footer-col">
+        <img src="img/logo.png" alt="烤焦 Logo" class="footer-logo">
+        <div class="footer-social">
+          <a href="https://www.facebook.com/share/1E5hpZDtzV/?mibextid=wwXIfr"><img src="img/icon/facebook.png"></a>
+          <a href="https://www.instagram.com/kaojiao_9?igsh=YzFhOWF1MjJrc2s%3D&utm_source=qr"><img src="img/icon/instagram.png"></a>
+          <a href="mailto:alfiework3@gmail.com"><img src="img/icon/envelope.png"></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p><b>本公司官網商品已投保產品責任險</b><br>投保字號：1000字第14PR123456號</p>
+        <p><img src="img/icon/envelope.png" class="footer-icon"> alfiework3@gmail.com</p>
+        <p>食品業者登錄字號：F-123456789-0001</p>
+      </div>
+      <div class="footer-col">
+        <p><b>線上客服時間：</b><br>週一至週五 09:00–17:00</p>
+        <a href="mailto:alfiework3@gmail.com"><p>線上客服</p></a>
+      </div>
+      <div class="footer-col">
+        <a href="aboutus.html">關於我們</a>
+        <a href="service.html">服務條款</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 烤焦蛋糕店 All Rights Reserved.</div>
+  </footer>
+
+  <!-- JS -->
+  <script src="productsdata.js"></script>
+  <script src="product.js"></script>
 </body>
 </html>

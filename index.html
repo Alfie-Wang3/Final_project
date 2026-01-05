@@ -1,234 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>首頁 | 烤焦蛋糕店</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首頁｜烤焦蛋糕店</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!--廣告-->
-    <div id="popup" class="popup hidden">
-        <div class="popup-content">
-            <span class="close-btn">&times;</span>
-            <h2>即將推出</h2>
-            <p>濃濃香菜 X 檸檬蛋糕</p>
-            <img src="img/hero/hero1.jpg" alt="香菜" style="width: 400px;">
-
-            <a href="products.html" class="popup-btn">立即選購</a>
-        </div>
+  <!-- 廣告彈窗 -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <span class="close-btn">&times;</span>
+      <h2>即將推出</h2>
+      <p>濃濃香菜 X 檸檬蛋糕</p>
+      <img src="img/hero/hero1.jpg" alt="香菜" style="width: 400px;">
+      <a href="products.html" class="popup-btn">立即選購</a>
     </div>
-   
-    <!--header-->
-    <header class="navbar">
-        <div class="nav-left">
-            <a href="#" class="member">
-                <img src="img/icon/user.png" class="nav-icon">
-                會員
-              </a>
-        </div>
-        
-        <div class="nav-center logo">
-            <img src="img/logo.PNG" alt="烤焦 Logo" class="site-logo">
-            <span class="site-name">烤焦</span>
-          </div>
-        
-        <div class="nav-right">
-            <a href="cart.html" class="cart">
-                <img src="img/icon/shopping-cart.png" class="nav-icon">
-                購物車
-              </a>
-        </div>
-    </header>
+  </div>
 
-    <nav class="sub-nav">
-        <a href="index.html">首頁</a>
-        <a href="products.html">所有商品</a>
-        <a href="about.html">關於烤焦</a>
-        <a href="remind.html">購物須知&&常見問題</a>
-    </nav>
-    
-    <!--主視覺-->
-    <section class="hero">
-        <div class="slideshow-container">
-      
-          <div class="mySlides fade">
-            <a href="product.html?id=p002"><img src="img/hero/hero4.jpeg" /></a>
-          </div>
-      
-          <div class="mySlides fade">
-            <a href="product.html?id=p005"><img src="img/hero/hero5.jpeg" /></a>
-          </div>
-      
-          <div class="mySlides fade">
-            <a href="product.html?id=p003"><img src="img/hero/hero6.jpeg" /></a>
-          </div>
-      
-          <!-- 左右按鈕 -->
-          <a class="prev" onclick="plusSlides(-1)">‹</a>
-          <a class="next" onclick="plusSlides(1)">›</a>
-        </div>
-      
-        <!-- 圓點 -->
-        <div class="dots" style="text-align: center;">
-          <span class="dot" onclick="currentSlides(0)"></span>
-          <span class="dot" onclick="currentSlides(1)"></span>
-          <span class="dot" onclick="currentSlides(2)"></span>
-        </div>
-    </section>
-      
-
-    <!--主打商品-->
-    <section class="featured">
-      <h2 class="product-title">熱銷/主打商品</h2>
-    </section>
-    <section class="featured" id="featuredProducts">
-      
-    </section>
-
-    <!--商品btn-->
-    <div class="to-products">
-        <a href="products.html" class="btn">看更多商品</a>
+  <!-- Header 導覽列 -->
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="#" class="member">
+        <img src="img/icon/user.png" class="nav-icon">會員
+      </a>
     </div>
+    <div class="nav-center logo">
+      <img src="img/logo.png" alt="烤焦 Logo" class="site-logo">
+      <span class="site-name">烤焦</span>
+    </div>
+    <div class="nav-right">
+      <a href="cart.html" class="cart">
+        <img src="img/icon/shopping-cart.png" class="nav-icon">購物車
+      </a>
+    </div>
+  </header>
 
-    <!--footer-->
-    <footer class="footer footer-advanced">
-      <div class="footer-container">
-        <!--Logo社群-->
-        <div class="footer-col">
-          <img src="img/logo.PNG" alt="烤焦 Logo" class="footer-logo">
-    
-          <div class="footer-social">
-            <a href="#"><img src="img/icon/facebook.png"></a>
-            <a href="#"><img src="img/icon/instagram.png"></a>
-            <a href="mailto:alfiework3@gmail.com"><img src="img/icon/envelope.png"></a>
+  <!-- 次導覽列 -->
+  <nav class="sub-nav">
+    <a href="index.html">首頁</a>
+    <a href="products.html">所有商品</a>
+    <a href="about.html">關於烤焦</a>
+    <a href="remind.html">購物須知 & 常見問題</a>
+  </nav>
+
+  <!-- 主視覺輪播 -->
+  <section class="hero">
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <a href="product.html?id=p002"><img src="img/hero/hero4.jpeg" alt="商品 p002"></a>
+      </div>
+      <div class="mySlides fade">
+        <a href="product.html?id=p005"><img src="img/hero/hero5.jpeg" alt="商品 p005"></a>
+      </div>
+      <div class="mySlides fade">
+        <a href="product.html?id=p003"><img src="img/hero/hero6.jpeg" alt="商品 p003"></a>
+      </div>
+      <a class="prev" onclick="plusSlides(-1)">‹</a>
+      <a class="next" onclick="plusSlides(1)">›</a>
+    </div>
+    <div class="dots">
+      <span class="dot" onclick="currentSlides(0)"></span>
+      <span class="dot" onclick="currentSlides(1)"></span>
+      <span class="dot" onclick="currentSlides(2)"></span>
+    </div>
+  </section>
+
+  <!-- 主打商品 -->
+  <section class="featured">
+    <h2 class="product-title">熱銷 / 主打商品</h2>
+  </section>
+  <section class="featured" id="featuredProducts"></section>
+
+  <!-- 商品按鈕 -->
+  <div class="to-products">
+    <a href="products.html" class="btn">看更多商品</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer footer-advanced">
+    <div class="footer-container">
+      <div class="footer-col">
+        <img src="img/logo.png" alt="烤焦 Logo" class="footer-logo">
+        <div class="footer-social">
+          <a href="https://www.facebook.com/share/1E5hpZDtzV/?mibextid=wwXIfr"><img src="img/icon/facebook.png" alt="Facebook"></a>
+          <a href="https://www.instagram.com/kaojiao_9?igsh=YzFhOWF1MjJrc2s%3D&utm_source=qr"><img src="img/icon/instagram.png" alt="Instagram"></a>
+          <a href="mailto:alfiework3@gmail.com"><img src="img/icon/envelope.png" alt="Email"></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p><b>本公司官網商品已投保產品責任險</b><br>投保字號：1000字第14PR123456號</p>
+        <p><img src="img/icon/envelope.png" class="footer-icon"> alfiework3@gmail.com</p>
+        <p>食品業者登錄字號：F-123456789-0001</p>
+      </div>
+      <div class="footer-col">
+        <p><b>線上客服時間：</b><br>週一至週五 09:00–17:00</p>
+        <a href="mailto:alfiework3@gmail.com"><p>線上客服</p></a>
+      </div>
+      <div class="footer-col">
+        <a href="aboutus.html">關於我們</a>
+        <a href="service.html">服務條款</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 烤焦蛋糕店 All Rights Reserved.</div>
+  </footer>
+
+  <!-- 登入彈窗 -->
+  <div id="loginPopup" class="popup hidden">
+    <div class="popup-content">
+      <span class="close-btn" id="closeLogin">&times;</span>
+      <h2>會員登入</h2>
+      <input type="text" id="usernameInput" placeholder="請輸入帳號">
+      <button id="loginBtn" class="btn" style="margin-top:20px;">登入</button>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="popup.js"></script>
+  <script src="login.js"></script>
+  <script src="productsdata.js"></script>
+  <script>
+    // 主打商品渲染
+    const featuredIds = ["p002", "p003", "p004"];
+    const featuredContainer = document.getElementById("featuredProducts");
+
+    featuredIds.forEach(id => {
+      const product = products.find(p => p.id === id);
+      if (!product) return;
+
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML = `
+        <a href="product.html?id=${product.id}">
+          <div class="product-img">
+            <img src="${product.image}" alt="${product.name}">
           </div>
-        </div>
-        <!--公司資訊-->
-        <div class="footer-col">
-          <p>
-            <b>本公司官網商品已投保產品責任險</b><br>
-            投保字號：1000字第14PR123456號
-          </p>
-  
-          <p>
-            <img src="img/icon/envelope.png" class="footer-icon">
-            alfiework3@gmail.com
-          </p>
-    
-          <p>
-            食品業者登錄字號：F-123456789-0001
-          </p>
-        </div>
-    
-        <!--客服資訊-->
-        <div class="footer-col">
-          <p><b>線上客服時間：</b><br>週一至週五 09:00–17:00</p>
-          <a href="mailto:alfiework3@gmail.com"><p>線上客服</p></a>
-        </div>
-    
-        <!--網站連結-->
-        <div class="footer-col">
-          <a href="aboutus.html">關於我們</a>
-          <a href="service.html">服務條款</a>
-        </div>
-    
-      </div>
-    
-      <div class="footer-bottom">
-        © 2025 烤焦蛋糕店 All Rights Reserved.
-      </div>
-    </footer>
-    
-
-    <div id="loginPopup" class="popup hidden">
-        <div class="popup-content">
-          <span class="close-btn" id="closeLogin">&times;</span>
-          <h2>會員登入</h2>
-      
-          <input type="text" id="usernameInput" placeholder="請輸入帳號">
-          <button id="loginBtn" class="btn" style="margin-top:20px;">
-            登入
-          </button>
-        </div>
-      </div>
-
-    <script src="popup.js"></script>
-    <script src="login.js"></script>
-    <script src="productsdata.js"></script>
-
-    <script>
-      // 指定主打商品 id
-      const featuredIds = ["p002", "p003","p004"];
-    
-      const featuredContainer = document.getElementById("featuredProducts");
-    
-      featuredIds.forEach(id => {
-        const product = products.find(p => p.id === id);
-        if (!product) return;
-    
-        const card = document.createElement("div");
-        card.className = "product-card";
-    
-        card.innerHTML = `
-          <a href="product.html?id=${product.id}">
-            <div class="product-img">
-              <img src="${product.image}" alt="${product.name}">
-            </div>
-            <h3 class="product-title">${product.name}</h3>
-            <p class="product-price">NT$ ${product.price}</p>
-          </a>
-        `;
-    
-        featuredContainer.appendChild(card);
-      });
-    </script>
-    
-
-    <script>
-        let slideIndex = 0;
-        let timer = null;
-        
-        document.addEventListener("DOMContentLoaded", function () {
-          showSlides(slideIndex);
-          autoPlay();
-        });
-        
-        function plusSlides(n) {
-          showSlides(slideIndex += n);
-        }
-        
-        function currentSlides(n) {
-          showSlides(slideIndex = n);
-        }
-        
-        function showSlides(n) {
-          clearTimeout(timer);
-        
-          let slides = document.getElementsByClassName("mySlides");
-          let dots = document.getElementsByClassName("dot");
-        
-          if (n >= slides.length) slideIndex = 0;
-          if (n < 0) slideIndex = slides.length - 1;
-        
-          for (let i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-          }
-        
-          for (let i = 0; i < dots.length; i++) {
-            dots[i].classList.remove("active");
-          }
-        
-          slides[slideIndex].style.display = "block";
-          dots[slideIndex].classList.add("active");
-        }
-        
-        function autoPlay() {
-          slideIndex++;
-          showSlides(slideIndex);
-          timer = setTimeout(autoPlay, 3000);
-        }
-        </script>
-        
+          <h3 class="product-title">${product.name}</h3>
+          <p class="product-price">NT$ ${typeof product.price === "number" ? product.price : product.priceOptions.slice}</p>
+        </a>
+      `;
+      featuredContainer.appendChild(card);
+    });
+  </script>
+  <script>
+    // 輪播
+    let slideIndex = 0, timer = null;
+    document.addEventListener("DOMContentLoaded", () => {
+      showSlides(slideIndex);
+      autoPlay();
+    });
+    function plusSlides(n) { showSlides(slideIndex += n); }
+    function currentSlides(n) { showSlides(slideIndex = n); }
+    function showSlides(n) {
+      clearTimeout(timer);
+      const slides = document.getElementsByClassName("mySlides");
+      const dots = document.getElementsByClassName("dot");
+      if (n >= slides.length) slideIndex = 0;
+      if (n < 0) slideIndex = slides.length - 1;
+      for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+      for (let i = 0; i < dots.length; i++) dots[i].classList.remove("active");
+      slides[slideIndex].style.display = "block";
+      dots[slideIndex].classList.add("active");
+    }
+    function autoPlay() {
+      slideIndex++;
+      showSlides(slideIndex);
+      timer = setTimeout(autoPlay, 3000);
+    }
+  </script>
 </body>
 </html>

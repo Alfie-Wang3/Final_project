@@ -14,17 +14,16 @@ function renderCart() {
   if (cart.length === 0) {
     cartBody.innerHTML = `
       <tr>
-        <td colspan="5" style="text-align:center;">
-          購物車目前沒有商品
-        </td>
+        <td colspan="5" style="text-align:center;">購物車目前沒有商品</td>
       </tr>
     `;
-    totalPriceEl.textContent = "$0";
+    totalPriceEl.textContent = "NT$0";
     return;
   }
 
   cart.forEach((item, index) => {
-    const subtotal = item.price * item.qty;
+    const optionText = item.options && item.options.length > 0 ? item.options.join("、") : "無";
+    const subtotal = (item.basePrice + (item.optionPrice || 0)) * item.qty;
     total += subtotal;
 
     cartBody.innerHTML += `
@@ -32,39 +31,28 @@ function renderCart() {
         <td>
           <strong>${item.name}</strong><br>
           <small>尺寸：${item.size}</small><br>
-          <small>
-            加購：
-            ${item.options && item.options.length > 0
-              ? item.options.join("、")
-              : "無"}
-          </small>
+          <small>加購：${optionText}</small>
         </td>
-        <td>$${item.price}</td>
+        <td>NT$${item.basePrice + (item.optionPrice || 0)}</td>
         <td>
           <button class="qty-btn" onclick="changeQty(${index}, -1)">−</button>
           ${item.qty}
           <button class="qty-btn" onclick="changeQty(${index}, 1)">＋</button>
         </td>
-        <td>$${subtotal}</td>
+        <td>NT$${subtotal}</td>
         <td>
-          <button class="delete-btn" onclick="removeItem(${index})">
-            刪除
-          </button>
+          <button class="delete-btn" onclick="removeItem(${index})">刪除</button>
         </td>
       </tr>
     `;
   });
 
-  totalPriceEl.textContent = `$${total}`;
+  totalPriceEl.textContent = `NT$${total}`;
 }
 
 function changeQty(index, diff) {
   cart[index].qty += diff;
-
-  if (cart[index].qty < 1) {
-    cart[index].qty = 1;
-  }
-
+  if (cart[index].qty < 1) cart[index].qty = 1;
   saveCart();
   renderCart();
 }
