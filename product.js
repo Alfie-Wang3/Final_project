@@ -17,6 +17,7 @@ const qtyEl = document.querySelector(".product-qty input");
 const addBtn = document.getElementById("addToCartBtn");
 const totalPriceEl = document.getElementById("totalPrice");
 
+
 // 填入商品基本資料
 nameEl.textContent = product.name;
 descEl.textContent = product.desc;
@@ -76,3 +77,56 @@ addBtn.addEventListener("click", () => {
   localStorage.setItem("cart", JSON.stringify(cart));
   alert("已加入購物車");
 });
+
+const reviewForm = document.getElementById("reviewForm");
+const ratingSelect = document.getElementById("rating");
+const commentInput = document.getElementById("comment");
+const reviewsList = document.getElementById("reviews");
+
+// 取得商品 ID
+const urlParams = new URLSearchParams(window.location.search);
+
+// 載入評論
+function loadReviews() {
+  const reviews = JSON.parse(localStorage.getItem("reviews_" + productId)) || [];
+  reviewsList.innerHTML = "";
+
+  if (reviews.length === 0) {
+    reviewsList.innerHTML = "<li>目前沒有評論</li>";
+    document.getElementById("averageRating").textContent = "";
+    return;
+  }
+
+  // 顯示評論
+  reviews.forEach(r => {
+    const li = document.createElement("li");
+    li.innerHTML = `<strong>${"★".repeat(r.rating)}${"☆".repeat(5-r.rating)}</strong> - ${r.comment}`;
+    reviewsList.appendChild(li);
+  });
+
+}
+
+
+// 新增評論
+reviewForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const rating = parseInt(ratingSelect.value);
+  const comment = commentInput.value.trim();
+
+  if (!comment) {
+    alert("請輸入評論內容");
+    return;
+  }
+
+  const reviews = JSON.parse(localStorage.getItem("reviews_" + productId)) || [];
+  reviews.push({ rating, comment });
+  localStorage.setItem("reviews_" + productId, JSON.stringify(reviews));
+
+  commentInput.value = "";
+  ratingSelect.value = "5";
+  loadReviews();
+});
+
+// 初始載入
+loadReviews();
+

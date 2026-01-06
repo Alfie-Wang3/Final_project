@@ -33,7 +33,7 @@
 
   <main class="product-detail">
     <div class="product-detail-img"></div>
-    <div class="product-detail-info">
+    <div class="product-detail-info">    
       <h1 class="product-name"></h1>
       <p class="product-desc"></p>
       <p class="product-size"></p>
@@ -57,6 +57,44 @@
     </div>
   </main>
 
+  <section class="page product-extra">
+    <div class="product-specs">
+      <h3>商品注意事項</h3>
+      <ul>
+        <li>圖片僅供參考，以實際產品為主</li>
+        <li>黑貓宅配偶有配送行程延誤的狀況，建議可選擇提前一日到貨，無法指定確切到貨時段。</li>
+        <li>開封請全程錄影，以保障你我權益 ; 如需申訴，請於24小時內告知線上客服。</li>
+      </ul>
+      <br>
+      <h3>規格說明</h3>
+      <ul>
+        <li>6吋 直徑：24cm 高度：16cm 適合人數：4-6人</li>
+        <li>8吋 直徑：28cm 高度：16cm 適合人數：6-8人</li>
+      </ul>
+    </div>
+  
+    <div class="product-reviews">
+      <h3>顧客評論</h3>
+      <form id="reviewForm">
+        <label for="rating">星級評分：</label>
+        <select id="rating">
+          <option value="5">★★★★★ (5)</option>
+          <option value="4">★★★★☆ (4)</option>
+          <option value="3">★★★☆☆ (3)</option>
+          <option value="2">★★☆☆☆ (2)</option>
+          <option value="1">★☆☆☆☆ (1)</option>
+        </select>
+  
+        <label for="comment">評論：</label>
+        <textarea id="comment" rows="3" placeholder="寫下您的心得..."></textarea>
+  
+        <button type="submit" class="btn">送出評論</button>
+      </form>
+  
+      <ul id="reviews" style="margin-top:20px;"></ul>
+    </div>
+  </section>
+  
   <footer class="footer footer-advanced">
     <div class="footer-container">
       <div class="footer-col">
