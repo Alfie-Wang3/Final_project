@@ -133,23 +133,11 @@ a:hover {
 /*主視覺*/
 .hero {
   height: 400px;
-  max-width: 100%;
   background-color: #000100;
   color: #F8F8F8;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 26px;
-}
-
-.hero img{
-  max-height: 100%;
-  width: 100%;
-}
-
-.hero {
-  width: 100%;
-  background: #000;
   position: relative;
 }
 
