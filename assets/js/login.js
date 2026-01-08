@@ -108,7 +108,7 @@ function showUserInfo(user) {
         const tr = document.createElement("tr");
         tr.innerHTML = `
           <td>${order.date}</td>
-          <td><img src="${i.image || 'assets/img/no-image.png'}" alt="${i.name}" style="width:60px;"> ${i.name} (${i.size})</td>
+          <td><img src="${i.image || 'assets/img/no-image.png'}" alt="${i.name}" style="width:60px;"> <br> ${i.name} (${i.size})</td>
           <td>${i.options?.length > 0 ? i.options.join("、") : "無"}</td>
           <td>${i.qty}</td>
           <td>NT$${subtotal}</td>
