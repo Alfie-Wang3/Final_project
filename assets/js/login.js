@@ -3,6 +3,7 @@ const registerBtn = document.getElementById("registerBtn");
 const userInfo = document.getElementById("userInfo");
 const userNameEl = document.getElementById("userName");
 const logoutBtn = document.getElementById("logoutBtn");
+const editForm = document.getElementById("editForm");
 
 // 登入
 loginForm.addEventListener("submit", (e) => {
@@ -15,9 +16,12 @@ loginForm.addEventListener("submit", (e) => {
     return;
   }
 
-  const user = JSON.parse(localStorage.getItem("user"));
-  if (user && user.username === username && user.password === password) {
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const user = users.find(u => u.username === username && u.password === password);
+
+  if (user) {
     alert("登入成功！");
+    localStorage.setItem("currentUser", JSON.stringify(user)); 
     showUserInfo(user);
   } else {
     alert("帳號或密碼錯誤，請重新輸入");
@@ -34,20 +38,27 @@ registerBtn.addEventListener("click", () => {
     return;
   }
 
-  const user = { username, password };
-  localStorage.setItem("user", JSON.stringify(user));
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  const exists = users.some(u => u.username === username);
+
+  if (exists) {
+    alert("此帳號已存在，請使用其他帳號");
+    return;
+  }
+
+  const newUser = { username, password };
+  users.push(newUser);
+  localStorage.setItem("users", JSON.stringify(users));
   alert("註冊成功，請重新登入");
 });
 
 // 登出
 logoutBtn.addEventListener("click", () => {
   if (confirm("確定要登出嗎？")) {
-    localStorage.removeItem("user");
+    localStorage.removeItem("currentUser"); 
     location.reload();
   }
 });
-
-const editForm = document.getElementById("editForm");
 
 // 更新會員資料
 editForm.addEventListener("submit", (e) => {
@@ -55,27 +66,35 @@ editForm.addEventListener("submit", (e) => {
   const email = document.getElementById("email").value.trim();
   const newPassword = document.getElementById("newPassword").value.trim();
 
-  let user = JSON.parse(localStorage.getItem("user"));
-  if (!user) {
+  let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  if (!currentUser) {
     alert("請先登入");
     return;
   }
 
-  if (email) user.email = email;
-  if (newPassword) user.password = newPassword;
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  const index = users.findIndex(u => u.username === currentUser.username);
 
-  localStorage.setItem("user", JSON.stringify(user));
+  if (email) currentUser.email = email;
+  if (newPassword) currentUser.password = newPassword;
+
+  if (index !== -1) {
+    users[index] = currentUser;
+    localStorage.setItem("users", JSON.stringify(users));
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  }
+
   alert("會員資料已更新！");
-  showUserInfo(user); // 重新顯示更新後的資訊
+  showUserInfo(currentUser);
 });
 
-// 顯示會員資訊（更新後也會呼叫這裡）
+// 顯示會員資訊
 function showUserInfo(user) {
   loginForm.classList.add("hidden");
   userInfo.classList.remove("hidden");
   userNameEl.textContent = user.username;
 
-  // 顯示購買記錄（表格化）
+  // 顯示購買記錄
   const historyBody = document.getElementById("purchaseHistory");
   historyBody.innerHTML = "";
   const history = JSON.parse(localStorage.getItem("purchaseHistory")) || [];
@@ -90,59 +109,53 @@ function showUserInfo(user) {
         tr.innerHTML = `
           <td>${order.date}</td>
           <td><img src="${i.image || 'assets/img/no-image.png'}" alt="${i.name}" style="width:60px;"> ${i.name} (${i.size})</td>
-          <td>${i.options && i.options.length > 0 ? i.options.join("、") : "無"}</td>
+          <td>${i.options?.length > 0 ? i.options.join("、") : "無"}</td>
           <td>${i.qty}</td>
           <td>NT$${subtotal}</td>
           <td>${order.customer?.name || "未填寫"}</td>
           <td>${order.customer?.phone || "未填寫"}</td>
           <td>${order.customer?.address || "未填寫"}</td>
-          <td><button onclick="reorder(${orderIndex})">再買一次</button></td>
+          <td>
+            <button onclick="reorder(${orderIndex})">再買一次</button>
+            <button onclick="deleteOrder(${orderIndex})">刪除</button>
+          </td>
         `;
         historyBody.appendChild(tr);
       });
     });
   }
 
-  // 顯示歷史評論
-  const myReviewsList = document.getElementById("myReviews");
-  myReviewsList.innerHTML = "";
-  history.forEach(order => {
-    order.items.forEach(i => {
-      const reviews = JSON.parse(localStorage.getItem("reviews_" + i.id)) || [];
-      reviews.forEach(r => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-          <strong>${i.name}</strong> - ${"★".repeat(r.rating)}${"☆".repeat(5-r.rating)}
-          <br>${r.comment}
-        `;
-        myReviewsList.appendChild(li);
-      });
-    });
-  });
-
-  // 顯示信箱（如果有）
+  // 顯示信箱
   if (user.email) {
     document.getElementById("email").value = user.email;
   }
 }
 
-// 再買一次功能：把該筆訂單的商品重新加入購物車
+// 再買一次
 function reorder(orderIndex) {
   const history = JSON.parse(localStorage.getItem("purchaseHistory")) || [];
   const order = history[orderIndex];
   if (!order) return;
 
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  order.items.forEach(item => {
-    cart.push(item);
-  });
+  order.items.forEach(item => cart.push(item));
   localStorage.setItem("cart", JSON.stringify(cart));
   alert("已將此訂單商品重新加入購物車！");
   window.location.href = "cart.html";
 }
 
+// 刪除訂單
+function deleteOrder(orderIndex) {
+  const history = JSON.parse(localStorage.getItem("purchaseHistory")) || [];
+  if (confirm("確定要刪除這筆訂單嗎？")) {
+    history.splice(orderIndex, 1);
+    localStorage.setItem("purchaseHistory", JSON.stringify(history));
+    showUserInfo(JSON.parse(localStorage.getItem("currentUser")));
+  }
+}
+
 // 頁面載入時檢查登入狀態
 document.addEventListener("DOMContentLoaded", () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  if (user) showUserInfo(user);
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  if (currentUser) showUserInfo(currentUser);
 });
