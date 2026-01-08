@@ -125,6 +125,21 @@ function showUserInfo(user) {
     });
   }
 
+  // 顯示評論 
+  const myReviewsList = document.getElementById("myReviews"); 
+  myReviewsList.innerHTML = ""; 
+  history.forEach(order => { 
+    order.items.forEach(i => { 
+      const reviews = JSON.parse(localStorage.getItem("reviews_" + i.id)) || []; 
+      reviews.forEach(r => { 
+        const li = document.createElement("li"); 
+        li.innerHTML = ` 
+        <strong>${i.name}</strong> - ${"★".repeat(r.rating)}${"☆".repeat(5-r.rating)} <br>${r.comment} `; 
+        myReviewsList.appendChild(li); 
+      }); 
+    }); 
+  });
+
   // 顯示信箱
   if (user.email) {
     document.getElementById("email").value = user.email;
