@@ -75,21 +75,50 @@ function showUserInfo(user) {
   userInfo.classList.remove("hidden");
   userNameEl.textContent = user.username;
 
-  // 顯示購買記錄
-  const historyList = document.getElementById("purchaseHistory");
-  historyList.innerHTML = "";
+  // 顯示購買記錄（表格化）
+  const historyBody = document.getElementById("purchaseHistory");
+  historyBody.innerHTML = "";
   const history = JSON.parse(localStorage.getItem("purchaseHistory")) || [];
 
   if (history.length === 0) {
-    historyList.innerHTML = "<li>目前沒有購買記錄</li>";
+    historyBody.innerHTML = `<tr><td colspan="9" style="text-align:center;">目前沒有購買記錄</td></tr>`;
   } else {
-    history.forEach(order => {
-      const li = document.createElement("li");
-      const itemsText = order.items.map(i => `${i.name} × ${i.qty}`).join("、");
-      li.textContent = `${order.date}：${itemsText}`;
-      historyList.appendChild(li);
+    history.forEach((order, orderIndex) => {
+      order.items.forEach(i => {
+        const subtotal = (i.basePrice + (i.optionPrice || 0)) * i.qty;
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${order.date}</td>
+          <td><img src="${i.image || 'assets/img/no-image.png'}" alt="${i.name}" style="width:60px;"> ${i.name} (${i.size})</td>
+          <td>${i.options && i.options.length > 0 ? i.options.join("、") : "無"}</td>
+          <td>${i.qty}</td>
+          <td>NT$${subtotal}</td>
+          <td>${order.customer?.name || "未填寫"}</td>
+          <td>${order.customer?.phone || "未填寫"}</td>
+          <td>${order.customer?.address || "未填寫"}</td>
+          <td><button onclick="reorder(${orderIndex})">再買一次</button></td>
+        `;
+        historyBody.appendChild(tr);
+      });
     });
   }
+
+  // 顯示歷史評論
+  const myReviewsList = document.getElementById("myReviews");
+  myReviewsList.innerHTML = "";
+  history.forEach(order => {
+    order.items.forEach(i => {
+      const reviews = JSON.parse(localStorage.getItem("reviews_" + i.id)) || [];
+      reviews.forEach(r => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <strong>${i.name}</strong> - ${"★".repeat(r.rating)}${"☆".repeat(5-r.rating)}
+          <br>${r.comment}
+        `;
+        myReviewsList.appendChild(li);
+      });
+    });
+  });
 
   // 顯示信箱（如果有）
   if (user.email) {
@@ -97,7 +126,20 @@ function showUserInfo(user) {
   }
 }
 
+// 再買一次功能：把該筆訂單的商品重新加入購物車
+function reorder(orderIndex) {
+  const history = JSON.parse(localStorage.getItem("purchaseHistory")) || [];
+  const order = history[orderIndex];
+  if (!order) return;
 
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  order.items.forEach(item => {
+    cart.push(item);
+  });
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("已將此訂單商品重新加入購物車！");
+  window.location.href = "cart.html";
+}
 
 // 頁面載入時檢查登入狀態
 document.addEventListener("DOMContentLoaded", () => {

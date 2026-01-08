@@ -17,7 +17,6 @@ const qtyEl = document.querySelector(".product-qty input");
 const addBtn = document.getElementById("addToCartBtn");
 const totalPriceEl = document.getElementById("totalPrice");
 
-
 // 填入商品基本資料
 nameEl.textContent = product.name;
 descEl.textContent = product.desc;
@@ -62,29 +61,42 @@ calculatePrice();
 // 加入購物車
 addBtn.addEventListener("click", () => {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const selectedSize = document.querySelector('input[name="size"]:checked').value;
-  const selectedOptions = Array.from(optionChecks).filter(c => c.checked).map(c => c.value);
+  const selectedSizeRadio = document.querySelector('input[name="size"]:checked');
+  const basePrice = Number(selectedSizeRadio.dataset.price);
+  const selectedSize = selectedSizeRadio.value;
+
+  let optionPrice = 0;
+  const selectedOptions = Array.from(optionChecks)
+    .filter(c => c.checked)
+    .map(c => {
+      optionPrice += Number(c.dataset.price);
+      return c.value;
+    });
+
+  const qty = Number(qtyEl.value);
+  const totalPrice = (basePrice + optionPrice) * qty;
 
   cart.push({
     id: product.id,
     name: product.name,
     size: selectedSize,
-    basePrice: Number(document.querySelector('input[name="size"]:checked').dataset.price),
+    basePrice: basePrice,
+    optionPrice: optionPrice,   // ✅ 新增：加購金額
     options: selectedOptions,
-    qty: Number(qtyEl.value)
+    qty: qty,
+    totalPrice: totalPrice,     // ✅ 新增：總金額
+    image: product.image        // ✅ 新增：商品圖片
   });
 
   localStorage.setItem("cart", JSON.stringify(cart));
   alert("已加入購物車");
 });
 
+// 評論功能
 const reviewForm = document.getElementById("reviewForm");
 const ratingSelect = document.getElementById("rating");
 const commentInput = document.getElementById("comment");
 const reviewsList = document.getElementById("reviews");
-
-// 取得商品 ID
-const urlParams = new URLSearchParams(window.location.search);
 
 // 載入評論
 function loadReviews() {
@@ -97,15 +109,12 @@ function loadReviews() {
     return;
   }
 
-  // 顯示評論
   reviews.forEach(r => {
     const li = document.createElement("li");
     li.innerHTML = `<strong>${"★".repeat(r.rating)}${"☆".repeat(5-r.rating)}</strong> - ${r.comment}`;
     reviewsList.appendChild(li);
   });
-
 }
-
 
 // 新增評論
 reviewForm.addEventListener("submit", (e) => {
@@ -129,4 +138,3 @@ reviewForm.addEventListener("submit", (e) => {
 
 // 初始載入
 loadReviews();
-

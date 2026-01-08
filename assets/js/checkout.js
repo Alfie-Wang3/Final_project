@@ -22,6 +22,7 @@ function renderOrder() {
 
     orderList.innerHTML += `
       <li>
+        <img src="${item.image || 'assets/img/no-image.png'}" alt="${item.name}" style="width:50px; vertical-align:middle; margin-right:8px;">
         ${item.name}（${item.size}） × ${item.qty}
         <br><small>加購：${optionText}</small>
         <span>NT$${subtotal}</span>
@@ -48,7 +49,8 @@ submitBtn.addEventListener("click", () => {
     const history = JSON.parse(localStorage.getItem("purchaseHistory")) || []; 
     history.push({ 
       date: new Date().toLocaleString(), 
-      items: cart 
+      items: cart,
+      customer: { name, phone, address }
     }); 
     localStorage.setItem("purchaseHistory", JSON.stringify(history)); 
   }

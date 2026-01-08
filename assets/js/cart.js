@@ -1,11 +1,20 @@
-function addToCart(product, selectedSize, selectedOptions, qty) {
+addBtn.addEventListener("click", () => {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const selectedSizeRadio = document.querySelector('input[name="size"]:checked');
+  const selectedSize = selectedSizeRadio.value;
+  const basePrice = Number(selectedSizeRadio.dataset.price);
 
-  const basePrice = Number(product.priceOptions[selectedSize]);
-  const optionPrice = selectedOptions.reduce((sum, opt) => {
-    const checkbox = document.querySelector(`input[value="${opt}"]`);
-    return sum + (checkbox ? Number(checkbox.dataset.price) : 0);
-  }, 0);
+  // 計算加購金額
+  let optionPrice = 0;
+  const selectedOptions = Array.from(optionChecks)
+    .filter(c => c.checked)
+    .map(c => {
+      optionPrice += Number(c.dataset.price);
+      return c.value;
+    });
+
+  const qty = Number(qtyEl.value);
+  const totalPrice = (basePrice + optionPrice) * qty;
 
   cart.push({
     id: product.id,
@@ -13,10 +22,11 @@ function addToCart(product, selectedSize, selectedOptions, qty) {
     size: selectedSize,
     basePrice: basePrice,
     options: selectedOptions,
-    optionPrice: optionPrice,
-    qty: qty
+    optionPrice: optionPrice,   
+    qty: qty,
+    totalPrice: totalPrice      
   });
 
   localStorage.setItem("cart", JSON.stringify(cart));
   alert("已加入購物車");
-}
+});

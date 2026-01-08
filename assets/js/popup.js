@@ -18,4 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem("hidePopup", "true");
     }
   });
+
+  dontShowAgain.addEventListener('change', () => {
+    if (dontShowAgain.checked) {
+      localStorage.setItem("hidePopup", "true");
+    } else {
+      localStorage.removeItem("hidePopup");
+    }
+  });
 });
